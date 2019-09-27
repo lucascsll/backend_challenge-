@@ -1,12 +1,8 @@
 import { Router } from 'express';
-import Regions from './app/models/Regions';
+import RegionsController from './app/controllers/RegionsController';
 
 const routes = new Router();
 
-routes.get('/', async (req, res) => {
-  const regions = await Regions.findAll({ attributes: ['regioes'] });
-
-  return res.json(regions);
-});
+routes.get('/regions', RegionsController.show);
 
 export default routes;
