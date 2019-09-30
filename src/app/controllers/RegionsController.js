@@ -2,9 +2,11 @@ import Regions from '../models/Regions';
 
 class RegionsController {
   async show(req, res) {
-    const regions = await Regions.findAll({ attributes: ['regioes'] });
-
-    return res.json(regions);
+    await Regions.sequelize
+      .query(`SELECT id_regioes, regioes   FROM challenge.regions;`)
+      .then(([results]) => {
+        return res.json(results);
+      });
   }
 }
 

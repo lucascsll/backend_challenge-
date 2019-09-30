@@ -1,3 +1,7 @@
 import app from './app';
 
-app.listen(3333);
+const http = require('http').createServer(app);
+
+// app.listen(3000);
+
+http.listen(3000);
